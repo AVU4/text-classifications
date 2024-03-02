@@ -1,10 +1,10 @@
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from tensorflow.keras.optimizers import Adam
-
 import BLSTM.blstm
 from data_holder import Corpus
 from utils import get_dataset
 
+LEARNING_RATE = 0.0001
 MAX_SEQUENCE_LENGTH = 1000
 MAX_NB_WORDS = 300000
 EMBEDDING_DIM = 200
@@ -18,7 +18,7 @@ if __name__ == "__main__":
     # model = TextCNN(MAX_SEQUENCE_LENGTH, MAX_NB_WORDS, EMBEDDING_DIM, class_num=nb_classes)
     model = BLSTM.blstm.build_model(nb_classes, word_index, MAX_NB_WORDS, EMBEDDING_DIM, MAX_SEQUENCE_LENGTH, 'BLSTM')
 
-    adam = Adam(learning_rate=0.0001)
+    adam = Adam(learning_rate=LEARNING_RATE)
     model.compile(adam, 'binary_crossentropy', metrics=['accuracy'])
 
     model_json = model.to_json()
