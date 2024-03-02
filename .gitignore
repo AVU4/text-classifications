@@ -1,0 +1,6 @@
+/data/
+/word_index.json
+/tokenizer.json
+/class_dict.json
+/model.h5
+/model.json
